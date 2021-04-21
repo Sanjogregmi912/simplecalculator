@@ -4,9 +4,11 @@ root=Tk()
 #title of the project
 root.title("calculator")
 #geometry of the GUI
+#root.geometry("450x600")
 #number entry box
 e1=Entry(root,width=35,borderwidth=5)
 e1.grid(row=0,column=0,columnspan=3,padx=10,pady=10)
+e1.insert(0,"enter any number:  ")
 def button_click(number):
     current=e1.get()
     e1.delete(0,END)
@@ -18,10 +20,22 @@ def button_add():
     global f_num
     f_num=int(first_number)
     e1.delete(0,END)
+def button_subtract():
+    first_number=e1.get()
+    global f_num
+    f_num=int(first_number)
+    e1.delete(0,END)
+def button_multiply():
+    first_number=e1.get()
+    global f_num
+    f_num=int(first_number)
+    e1.delete(0,END)
 def button_equal():
     second_number=e1.get()
     e1.delete(0,END)
     e1.insert(0,f_num + int(second_number))
+    e1.insert(0,f_num - int(second_number))
+    e1.insert(0,f_num * int(second_number))
 
 #defing the buttoms
 buttom_1=Button(root, text="1",padx=40,pady=20,command=lambda : button_click(1))
@@ -37,6 +51,8 @@ buttom_0=Button(root,text="0",padx=40,pady=20,command=lambda : button_click(0))
 buttom_add=Button(root,text="+",padx=39,pady=20,command=button_add)
 buttom_equal=Button(root,text="=",padx=91,pady=20,command=button_equal)
 buttom_clear=Button(root,text="clear",padx=79,pady=20,command=button_clear)
+button_subtract=Button(root,text="-",padx=39,pady=20,command=button_subtract)
+button_multiply=Button(root,text="*",padx=39,pady=20,command=button_multiply)
 #putting buttons on the screen
 buttom_1.grid(row=3,column=0)
 buttom_2.grid(row=3,column=1)
@@ -55,6 +71,9 @@ buttom_clear.grid(row=4,column=1,columnspan=2)
 
 buttom_add.grid(row=5,column=0)
 buttom_equal.grid(row=5,column=1,columnspan=2)
+button_subtract.grid(row=6,column=0)
+button_multiply.grid(row=6,column=1)
+
 
 
 
